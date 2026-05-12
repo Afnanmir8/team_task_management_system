@@ -3,5 +3,16 @@
   "outputDirectory": "frontend/dist",
   "env": {
     "VITE_API_URL": "@vite_api_url"
+  },
+  "experimentalServices": {
+    "frontend": {
+      "entrypoint": "frontend",
+      "routePrefix": "/",
+      "framework": "vite"
+    },
+    "backend": {
+      "entrypoint": "backend",
+      "routePrefix": "/_/backend"
+    }
   }
 }
