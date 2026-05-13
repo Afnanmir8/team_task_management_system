@@ -3,6 +3,3 @@
   publish = "frontend/dist"
   command = "npm install && npm run build"
 
-[context.production.environment]
-  # Set this in Netlify UI to your backend URL, or replace below with your backend URL
-  VITE_API_URL = "https://teamtaskmanagementsystem-production.up.railway.app/api"

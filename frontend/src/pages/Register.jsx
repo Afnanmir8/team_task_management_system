@@ -5,7 +5,7 @@ import './Auth.css'
 
 const BACKEND_URL = import.meta.env.VITE_API_URL?.trim()
   ? import.meta.env.VITE_API_URL.trim().replace(/\/api\/?$/, '')
-  : 'https://teamtaskmanagementsystem-production.up.railway.app'
+  : ''
 
 export default function Register() {
   const navigate = useNavigate()
