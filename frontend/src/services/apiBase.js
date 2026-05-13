@@ -1,6 +1,13 @@
 export function getApiBaseUrl() {
-  const apiUrl = import.meta.env.VITE_API_URL?.trim() || ''
+  // Try to get from environment variable
+  let apiUrl = import.meta.env.VITE_API_URL?.trim() || ''
 
+  // Fallback: if in production and env var not set, use Railway backend
+  if (!apiUrl && import.meta.env.PROD) {
+    apiUrl = 'https://teamtaskmanagementsystem-production.up.railway.app'
+  }
+
+  // If still empty, return empty (will use relative URLs)
   if (!apiUrl) {
     return ''
   }
