@@ -1,9 +1,30 @@
 services:
   - type: web
+    name: team-task-management-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: GIN_MODE
+        value: release
+      - key: ALLOWED_ORIGINS
+        value: https://team-task-management-frontend.onrender.com
+
+  - type: web
     name: team-task-management-frontend
     runtime: static
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: team-task-management-backend
+          envVarKey: RENDER_EXTERNAL_URL
     routes:
       - type: rewrite
         source: /*
