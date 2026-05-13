@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: team-task-management-frontend
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://teamtaskmanagementsystem-production.up.railway.app/api
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
