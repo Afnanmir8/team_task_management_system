@@ -176,6 +176,7 @@ export default function Register() {
               id="password"
               type="password"
               placeholder="••••••••"
+              autoComplete="new-password" 
               value={form.password}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               required

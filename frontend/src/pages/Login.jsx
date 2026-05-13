@@ -145,6 +145,7 @@ export default function Login({ setIsAuthenticated }) {
               id="password"
               type="password"
               placeholder="••••••••"
+              autoComplete="current-password"
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
               required
