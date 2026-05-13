@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
+import { getApiBaseUrl } from '../services/apiBase'
 import './Auth.css'
 
-const BACKEND_URL = import.meta.env.VITE_API_URL?.trim()
-  ? import.meta.env.VITE_API_URL.trim().replace(/\/api\/?$/, '')
-  : ''
+const BACKEND_URL = getApiBaseUrl()
 
 export default function Register() {
   const navigate = useNavigate()
