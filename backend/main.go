@@ -55,6 +55,10 @@ func corsMiddleware() gin.HandlerFunc {
 }
 
 func main() {
+	// Set production mode
+	if os.Getenv("GIN_MODE") == "" {
+		gin.SetMode(gin.ReleaseMode)
+	}
 
 	config.ConnectDB()
 
@@ -65,6 +69,9 @@ func main() {
 	)
 
 	router := gin.Default()
+
+	// Set trusted proxies for Railway deployment
+	router.SetTrustedProxies([]string{"127.0.0.1"})
 
 	router.Use(corsMiddleware())
 
@@ -84,7 +91,7 @@ func main() {
 
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "5000"
+		port = "8080"
 	}
 
 	router.Run(":" + port)
